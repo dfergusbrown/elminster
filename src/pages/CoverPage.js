@@ -15,11 +15,11 @@ const CoverPage = () => {
             </Row>
             <Row className='m-5 p-4'>
                 <Col>
-                    <Link to='Intro'>
-                        <Button
+                    <Link to='Inside'>
+                        <button
                             title="Enter"
-                            className='button'
-                        >ENTER</Button>
+                            className='entrybutton'
+                        >ENTER</button>
                     </Link>
                 </Col>
             </Row>
