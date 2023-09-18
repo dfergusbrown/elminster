@@ -1,17 +1,16 @@
-import './App.css';
-import { Button } from 'reactstrap';
+import * as React from "react";
+import { Routes, Route } from "react-router-dom";
+import CoverPage from "./pages/CoverPage";
+import Introduction from "./pages/Introduction";
+
+
 
 function App() {
   return (
-    <div className="background">
-      <div className='container'>
-        <Button
-          onClick={() => alert('You\'ve entered the Dungeon')}
-          title="Enter"
-          className='button'
-        >ENTER</Button>
-      </div>
-    </div>
+    <Routes>
+      <Route path='/' element={<CoverPage />} />
+      <Route path='Intro' element={<Introduction />} />
+    </Routes>
   );
 }
 

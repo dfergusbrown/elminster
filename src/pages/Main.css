@@ -1,0 +1,7 @@
+.background {
+    background-image: url('/src/images/scriptPaperBackground.jpg');
+    background-size: cover;
+    background-position-x: center;
+    height: 100vh;
+    justify-content: center;
+  }

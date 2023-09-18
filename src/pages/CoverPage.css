@@ -1,0 +1,60 @@
+.backgroundCover {
+  background-image: url('/src/images/fantasyhouse.jpg');
+  background-size: cover;
+  background-position-x: center;
+  height: 100vh;
+  display: flex;
+}
+
+.button {
+  scale: 3;
+  background-color: hsla(330,83.72%,16.86%, 0);
+  color: whitesmoke;
+  font-family: Almendra;
+}
+
+.buttoncontainer {
+  justify-content: center;
+}
+
+.title1, .title3 {
+  color: white;
+  font-size: 200px;
+}
+
+.title1 {
+  font-family: Bricklay;
+}
+
+.title3 {
+  font-family: Endor;
+}
+
+
+@font-face {
+  font-family: "Almendra";
+  src:
+  local("Almendra"),
+    url('../fonts/Almendra-Regular.ttf') format ('ttf');
+}
+
+@font-face {
+  font-family: "Bricklay";
+  src:
+  local("Bricklay"),
+  url('../fonts/bricklay/BricklayDemoRegular.ttf')
+}
+
+@font-face {
+  font-family: "Halfelven";
+  src:
+  local("Halfelven"),
+  url('../fonts/half-elven/halfelven.ttf')
+}
+
+@font-face {
+  font-family: "Endor";
+  src:
+  local("Endor"),
+  url('../fonts/endor/ENDOR___.ttf')
+}
