@@ -40,6 +40,10 @@
   align-items: center;
 }
 
+.cardset {
+  height: 25vh;
+  align-items: center;
+}
 
 @font-face {
   font-family: "Almendra";

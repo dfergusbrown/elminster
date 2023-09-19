@@ -72,3 +72,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 Image credits:
 <a href="https://www.freepik.com/free-vector/wood-door-medieval-castle-old-gate-stone-wall-with-flaming-torches-night_12873509.htm#query=dungeon%20door&position=17&from_view=keyword&track=ais">Image by upklyak</a> on Freepik
+
+<a href="https://www.freepik.com/free-vector/mystical-golden-frame-black-background-vector_20776517.htm#query=tarot%20card%20back&position=7&from_view=keyword&track=ais">Image by rawpixel.com</a> on Freepik

@@ -13,7 +13,7 @@ const Intro = () => {
                     </Link>
                 </Col>
                 <Col>
-                    <img src={oldWizard}/>
+                    <img src={oldWizard} alt="Old Wizard sitting down in his cottage"/>
                 </Col>
             </Row>
         </Container>
