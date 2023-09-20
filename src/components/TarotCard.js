@@ -1,31 +1,51 @@
-import { Card, CardImg, CardImgOverlay, CardText } from "reactstrap";
+import { Button, Card, CardImg, CardImgOverlay, CardText } from "reactstrap";
 import tarotCard from "../images/tarotcardback.jpg";
 
-const TarotCard = () => {
-    return(
-        <Card inverse style={{ 
-            justifyContent: "center",
-            alignItems: "center",
-            maxWidth: "225px"
-            }}>
-            <CardImg
-                alt="Tarot Card"
-                src={tarotCard}
-                style={{
-                    height: "150px",
-                    width: "225px"
-                }}
-            />
-            <CardImgOverlay>
-                <CardText
-                    style={{
-                        fontSize: "25px",
-                        textAlign: "center"
-                    }}
-                >Do you like magic?</CardText>
-            </CardImgOverlay>
-        </Card>
-    )
+
+const TarotCard = ({text, answer1, }) => {
+   
+
+    // if (!text) {
+    //     return null
+    // } else {
+        return(
+            <Card inverse style={styles.tarotCard} className="my-auto">
+                <CardImg
+                    alt="Tarot Card"
+                    src={tarotCard}
+                    style={styles.cardImage}
+                />
+                <CardImgOverlay>
+                    <CardText style={styles.cardText}>{text}</CardText>
+                    <Button
+                        onClick={ console.log('tasty')}
+                    >{answer1}</Button>
+                </CardImgOverlay>
+
+            </Card>
+        )
+    // }
+
+}
+
+const styles = {
+    tarotCard: { 
+        justifyContent: "center",
+        alignItems: "center",
+        maxWidth: "300px"
+        },
+    cardText: {
+        fontSize: "20px",
+        textAlign: "center",
+        marginTop: "35px",
+        marginLeft: "15px",
+        marginRight: "15px"
+
+    },
+    cardImage: {
+        height: "200px",
+        width: "300px"
+    }
 }
 
 export default TarotCard;

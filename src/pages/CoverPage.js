@@ -1,4 +1,4 @@
-import { Button, Col, Container, Row} from 'reactstrap';
+import { Col, Container, Row} from 'reactstrap';
 import './CoverPage.css';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ const CoverPage = () => {
         <Container>
             <Row className='my-5'>
                 <h2 className='title1'>Cottage 
-                    <h4 style={{fontSize: 100}}>  of the  </h4>
+                    <p style={{fontSize: 100}}>  of the  </p>
                 </h2>
                 <h1 className='title3'>Old Mage</h1>
                 <p></p>

@@ -11,7 +11,7 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<CoverPage />} />
-      <Route path='Inside' element={<Inside />}>
+      <Route path='Inside/*' element={<Inside />}>
         <Route path='Intro' element={<Intro />} />
         <Route path='QuizGame' element={<QuizGame />} />
       </Route>

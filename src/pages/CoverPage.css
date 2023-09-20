@@ -19,7 +19,7 @@
 
 .title1, .title3 {
   color: white;
-  font-size: 200px;
+  font-size: 180px;
 }
 
 .title1 {
@@ -29,6 +29,8 @@
 .title3 {
   font-family: Endor;
 }
+
+/* INTRO PAGE */
 
 .introtext {
   font-family: Halfelven;
@@ -40,10 +42,25 @@
   align-items: center;
 }
 
+/* QUIZGAME */
+
+.cardcontainer {
+  height: 70vh;
+  align-items: center;
+
+}
+
 .cardset {
-  height: 25vh;
+  height: 35vh;
   align-items: center;
 }
+
+.placeholder {
+  height: 15vh;
+  align-items: center;
+}
+
+
 
 @font-face {
   font-family: "Almendra";
