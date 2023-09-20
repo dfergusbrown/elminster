@@ -2,12 +2,13 @@ import { Button, Card, CardImg, CardImgOverlay, CardText } from "reactstrap";
 import tarotCard from "../images/tarotcardback.jpg";
 
 
-const TarotCard = ({text, answer1, }) => {
-   
+const TarotCard = ({ cardQuestion }) => {
 
-    // if (!text) {
-    //     return null
-    // } else {
+    const {text, answer1, answer2} = cardQuestion || {}
+
+    if (!text) {
+        return null
+    } else {
         return(
             <Card inverse style={styles.tarotCard} className="my-auto">
                 <CardImg
@@ -18,13 +19,16 @@ const TarotCard = ({text, answer1, }) => {
                 <CardImgOverlay>
                     <CardText style={styles.cardText}>{text}</CardText>
                     <Button
-                        onClick={ console.log('tasty')}
-                    >{answer1}</Button>
+                        onClick={() => console.log(answer1.text1)}
+                    >{answer1.text1}</Button>
+                    <Button
+                        onClick={() => console.log(answer2.text2)}
+                    >{answer2.text2}</Button>
                 </CardImgOverlay>
 
             </Card>
         )
-    // }
+    }
 
 }
 

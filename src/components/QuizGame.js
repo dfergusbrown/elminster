@@ -46,8 +46,9 @@ const QuizGame = () => {
             <Row className="cardset">
                 <Col className="offset-2">
                     <TarotCard 
-                        text={Q1.text}
-                        answer1={Q1.answer1.text1}
+                        // text={Q1.text}
+                        // answer1={Q1.answer1.text1}
+                        cardQuestion={Q1}
                         handler={() => {
                             handleClass()
                             console.log('yep')
@@ -90,3 +91,12 @@ export default QuizGame;
 // 2. What constants / functions can I move out and import back in?
 // 3. How to pass the question object into the tarot card?
 // 4. ^^ ALSO, how to randomize the selection of the question object
+
+// NOTES FOR 2nd TIME
+// btw, yes reducers are a good thing
+// Consequently, figured out how to move questions to a different file
+// 3 - figured out how to pass the question object as a whole through to the tarot card AND destructure it
+
+// 1. STILL need to figure out how to randomize / shuffle the (updated) array of questions
+// 2. Connect the handleArray function to the state / reducers
+// 3. Research and implement transform animation for cards

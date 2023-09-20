@@ -4,6 +4,10 @@ export const Q1 = {
     answer1: {
         text1: "magic",
         action: 1
+    },
+    answer2: {
+        text2: "weapons",
+        action: 2
     }
 }
 export const Q2 = { 
