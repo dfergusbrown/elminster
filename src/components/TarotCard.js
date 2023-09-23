@@ -2,7 +2,7 @@ import { Button, Card, CardImg, CardImgOverlay, CardText } from "reactstrap";
 import tarotCard from "../images/tarotcardback.jpg";
 
 
-const TarotCard = ({ cardQuestion }) => {
+const TarotCard = ({ cardQuestion, handler }) => {
 
     const {text, answer1, answer2} = cardQuestion || {}
 
@@ -19,7 +19,11 @@ const TarotCard = ({ cardQuestion }) => {
                 <CardImgOverlay>
                     <CardText style={styles.cardText}>{text}</CardText>
                     <Button
-                        onClick={() => console.log(answer1.text1)}
+                        onClick={() => {
+                            console.log(answer1.text1)
+                            handler(answer1.text1)
+                            }
+                        }
                     >{answer1.text1}</Button>
                     <Button
                         onClick={() => console.log(answer2.text2)}

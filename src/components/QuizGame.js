@@ -4,8 +4,8 @@ import { useReducer, useState } from "react";
 import { Q1, Q2 } from "./Questions";
 
 const reducer = (state, action) => {
-    switch (action.type) {
-        case 1: 
+    switch (action) {
+        case "magic": 
             return state.filter(item => item !== "Fighter" || "Barbarian" || "Monk" || "Rogue");
         case 2:
             return state.filter(item => item === "Bard" || "Wizard" || "Cleric");
@@ -15,6 +15,8 @@ const reducer = (state, action) => {
 }
 
 const QuizGame = () => {
+    
+    // DND CLASSES
     const dndClassList = ["Artificer", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"]
 
     const [classArray, dispatch] = useReducer(reducer, dndClassList)
@@ -22,21 +24,23 @@ const QuizGame = () => {
     const handleClass = (question, state) => {
         dispatch(question.action)
         console.log(state)
-        whichQuestions()
     }
 
 
-
+    // QUESTIONS
     let questionsList = []
     const [questionArray, setQuestionArray] = useState(questionsList)
+
     const whichQuestions = () => {
+
         if (classArray === dndClassList) {
-            setQuestionArray(questionArray.push(Q1))
+            setQuestionArray(oldArray => [...oldArray, Q1])
         } else if (classArray.length <= 3 && classArray.length > 1) {
             setQuestionArray(/*class questions list here */)
         } else if (classArray.includes(("Warlock" || "Cleric" || "Druid") && ("Sorcerer" || "Bard" || "Wizard"))) {
-            setQuestionArray(questionArray.push(Q2))
+            setQuestionArray(oldArray => [...oldArray, Q2])
         }
+        
     }
 
 
@@ -46,12 +50,12 @@ const QuizGame = () => {
             <Row className="cardset">
                 <Col className="offset-2">
                     <TarotCard 
-                        // text={Q1.text}
-                        // answer1={Q1.answer1.text1}
                         cardQuestion={Q1}
                         handler={() => {
-                            handleClass()
-                            console.log('yep')
+                            handleClass(classArray)
+                        }}
+                        handler2={() => {
+                            whichQuestions()
                         }}
                     
                     />
@@ -59,6 +63,7 @@ const QuizGame = () => {
                 <Col>
                     <TarotCard 
                         text={Q2.text}
+
                     />
                 </Col>
                 <Col>
