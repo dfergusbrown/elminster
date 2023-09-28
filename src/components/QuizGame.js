@@ -1,13 +1,15 @@
 import { Container, Row, Col} from "reactstrap";
 import TarotCard from "./TarotCard";
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import { Q1, Q2 } from "./Questions";
 
 const reducer = (state, action) => {
     switch (action) {
-        case "magic": 
+        case 1: 
             return state.filter(item => item !== "Fighter" || "Barbarian" || "Monk" || "Rogue");
         case 2:
+            return state.filter(item => item !== "Wizard" || "Druid" || "Warlock" || "Sorcerer" || "Bard" || "Cleric")
+        case 3:
             return state.filter(item => item === "Bard" || "Wizard" || "Cleric");
         default:
             return state;
@@ -21,11 +23,12 @@ const QuizGame = () => {
 
     const [classArray, dispatch] = useReducer(reducer, dndClassList)
     
-    const handleClass = (question, state) => {
-        dispatch(question.action)
-        console.log(state)
+    const handleClass = (action) => {
+        dispatch(action)
+        console.log(action)
+        // whichQuestions()
     }
-
+    console.log(classArray)
 
     // QUESTIONS
     let questionsList = []
@@ -36,11 +39,14 @@ const QuizGame = () => {
         if (classArray === dndClassList) {
             setQuestionArray(oldArray => [...oldArray, Q1])
         } else if (classArray.length <= 3 && classArray.length > 1) {
-            setQuestionArray(/*class questions list here */)
-        } else if (classArray.includes(("Warlock" || "Cleric" || "Druid") && ("Sorcerer" || "Bard" || "Wizard"))) {
-            setQuestionArray(oldArray => [...oldArray, Q2])
-        }
+            setQuestionArray(/*individual class questions list here */)
+        } else {
         
+            if (classArray.includes(("Warlock" || "Cleric" || "Druid") && ("Sorcerer" || "Bard" || "Wizard"))) {
+                questionsList = [...questionsList, Q2]
+            }
+        }
+        // console.log(`Questions Array: ${questionsList}`)
     }
 
 
@@ -51,19 +57,13 @@ const QuizGame = () => {
                 <Col className="offset-2">
                     <TarotCard 
                         cardQuestion={Q1}
-                        handler={() => {
-                            handleClass(classArray)
-                        }}
-                        handler2={() => {
-                            whichQuestions()
-                        }}
-                    
+                        handler={action => handleClass(action)}
                     />
                 </Col>
                 <Col>
                     <TarotCard 
-                        text={Q2.text}
-
+                        cardQuestion={Q2}
+                        handler={action => handleClass(action)}
                     />
                 </Col>
                 <Col>

@@ -20,14 +20,18 @@ const TarotCard = ({ cardQuestion, handler }) => {
                     <CardText style={styles.cardText}>{text}</CardText>
                     <Button
                         onClick={() => {
-                            console.log(answer1.text1)
-                            handler(answer1.text1)
+                            handler(answer1.action)
+                            console.log(`Button pressed: ${answer1.keyword}`)
                             }
                         }
-                    >{answer1.text1}</Button>
+                    >{answer1.keyword}</Button>
                     <Button
-                        onClick={() => console.log(answer2.text2)}
-                    >{answer2.text2}</Button>
+                        onClick={() => {
+                            handler(answer2.action)
+                            console.log(`Button pressed: ${answer2.keyword}`)
+                            }
+                        }
+                    >{answer2.keyword}</Button>
                 </CardImgOverlay>
 
             </Card>
