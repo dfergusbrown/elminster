@@ -7,7 +7,9 @@ const Intro = () => {
         <Container>
             <Row className="introcard">
                 <Col>
-                    <p className="introtext">What's that? You don't know what class to choose for your DND campaign?  <br/><br/>Well, answer me this...</p>
+                    <p className="introtext">Whats that? You dont know what class to choose for your DND campaign?  
+                        <br/><br/>Well answer me this...
+                    </p>
                     <Link to="/Inside/QuizGame">
                         <Button>Next</Button>
                     </Link>

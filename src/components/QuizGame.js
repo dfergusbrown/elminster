@@ -1,20 +1,9 @@
 import { Container, Row, Col} from "reactstrap";
 import TarotCard from "./TarotCard";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { Q1, Q2 } from "./Questions";
+import reducer from "./reducer"
 
-const reducer = (state, action) => {
-    switch (action) {
-        case 1: 
-            return state.filter(item => item !== "Fighter" || "Barbarian" || "Monk" || "Rogue");
-        case 2:
-            return state.filter(item => item !== "Wizard" || "Druid" || "Warlock" || "Sorcerer" || "Bard" || "Cleric")
-        case 3:
-            return state.filter(item => item === "Bard" || "Wizard" || "Cleric");
-        default:
-            return state;
-    }
-}
 
 const QuizGame = () => {
     

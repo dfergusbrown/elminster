@@ -33,8 +33,8 @@
 /* INTRO PAGE */
 
 .introtext {
-  font-family: Halfelven;
-  font-size: 50px;
+  font-family: WizMagic;
+  font-size: 30px;
 }
 
 .introcard {
@@ -88,4 +88,18 @@
   src:
   local("Endor"),
   url('../fonts/endor/ENDOR___.ttf')
+}
+
+@font-face {
+  font-family: "WizMagic";
+  src:
+  local("WizMagic"),
+  url('../fonts/wizards_magic/Wizards\'\ Magic.ttf')
+}
+
+@font-face {
+  font-family: "OzWizard";
+  src:
+  local("OzWizard"),
+  url('../fonts/ozswizard/OzsWizard-CowardlyLion.ttf')
 }
