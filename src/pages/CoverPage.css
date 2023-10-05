@@ -52,7 +52,10 @@
 
 .cardset {
   height: 35vh;
+  margin: 0px 100px !important;
   align-items: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .placeholder {
