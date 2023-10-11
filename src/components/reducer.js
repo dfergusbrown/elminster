@@ -18,7 +18,7 @@ const reducer = (state, action) => {
         case 4.2:
             return state;
         default:
-            return state;
+            throw Error('Unknown action');
     }
 }
 

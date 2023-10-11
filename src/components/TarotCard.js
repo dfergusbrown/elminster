@@ -10,42 +10,45 @@ const TarotCard = ({ cardQuestion, handler }) => {
         return null
     } else {
         return(
-            <Card inverse style={styles.tarotCard} className="my-auto">
-                <CardImg
-                    alt="Tarot Card"
-                    src={tarotCard}
-                    style={styles.cardImage}
-                />
-                <CardImgOverlay>
-                    <CardText style={styles.cardText}>{text}</CardText>
-                    <Button
-                        onClick={() => {
-                            handler(answer1.action)
-                            console.log(`Button pressed: ${answer1.keyword}`)
-                            }
-                        }
-                    >{answer1.keyword}</Button>
-                    <Button
-                        onClick={() => {
-                            handler(answer2.action)
-                            console.log(`Button pressed: ${answer2.keyword}`)
-                            }
-                        }
-                    >{answer2.keyword}</Button>
-                </CardImgOverlay>
-
-            </Card>
+                <Card inverse className="tarotCard">
+                    <div className="front">
+                        <CardImg
+                            alt="Tarot Card"
+                            src={tarotCard}
+                            style={styles.cardImage}
+                        />
+                        <CardImgOverlay>
+                            <CardText style={styles.cardText}>{text}</CardText>
+                            <Button
+                                onClick={() => {
+                                    handler(answer1.type)
+                                    console.log(`Button pressed: ${answer1.keyword}`)
+                                    }
+                                }
+                            >{answer1.keyword}</Button>
+                            <Button
+                                onClick={() => {
+                                    handler(answer2.type)
+                                    console.log(`Button pressed: ${answer2.keyword}`)
+                                    }
+                                }
+                            >{answer2.keyword}</Button>
+                        </CardImgOverlay>
+                    </div>
+                    <div className="back">
+                    <CardImg
+                            alt="Tarot Card"
+                            src={tarotCard}
+                            style={styles.cardImage}
+                        />
+                    </div>
+                </Card>
         )
     }
 
 }
 
 const styles = {
-    tarotCard: { 
-        justifyContent: "center",
-        alignItems: "center",
-        maxWidth: "300px"
-        },
     cardText: {
         fontSize: "20px",
         textAlign: "center",

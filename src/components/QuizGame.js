@@ -14,12 +14,11 @@ const QuizGame = () => {
     
     const handleClass = (action) => {
         dispatch(action)
-        console.log(action)
-        // whichQuestions()
+        console.log(`action to dispatch: ${action}`)
     }
 
     // QUESTIONS
-    let questionsList = [Q1, Q2, Q3, Q4]
+    let questionsList = [Q1, Q2, Q3]
     const [questionArray, setQuestionArray] = useState(questionsList)
 
     const whichQuestions = () => {
@@ -52,14 +51,24 @@ const QuizGame = () => {
             <Row className="cardset">
                 {questionArray.map(question => {
                     return (
-                    <Col>
-                        <TarotCard 
-                            cardQuestion={question}
-                            handler={(question) => handleClass(question)}
-                        />
-                    </Col>
+                        <Col className="hoverContainer">
+                            <TarotCard 
+                                cardQuestion={question}
+                                handler={handleClass}
+                                key={`${question.answer1}/${question.answer2}`}
+                            />
+                        </Col>
                     )
                 })}
+            </Row>
+            <Row>
+                <ol>
+                {classArray.map(item => {
+                    return (
+                        <li>{item}</li>
+                    )
+                })}
+                </ol>
             </Row>
             <Button
                 onClick={() => console.log(classArray)}
