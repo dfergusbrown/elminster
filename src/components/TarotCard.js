@@ -10,7 +10,7 @@ const TarotCard = ({ cardQuestion, handler }) => {
         return null
     } else {
         return(
-                <Card inverse className="tarotCard">
+                <Card inverse className="tarotCard roll-out">
                     <div className="front">
                         <CardImg
                             alt="Tarot Card"

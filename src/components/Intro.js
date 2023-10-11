@@ -11,11 +11,11 @@ const Intro = () => {
                         <br/><br/>Well answer me this...
                     </p>
                     <Link to="/Inside/QuizGame">
-                        <Button>Next</Button>
+                        <Button className="button-intro">CONTINUE</Button>
                     </Link>
                 </Col>
                 <Col>
-                    <img src={oldWizard} alt="Old Wizard sitting down in his cottage"/>
+                    <img src={oldWizard} className="rounded"alt="Old Wizard sitting down in his cottage"/>
                 </Col>
             </Row>
         </Container>
