@@ -94,11 +94,16 @@
   transform-style: preserve-3d;
 }
 
-.tarotCard:hover {
+.tarotCard * {
+  color: hsl(30.3,64.71%,70%);
+  font-family: Almendra;
+}
+
+/* .tarotCard:hover {
   cursor: pointer;
   transform: rotateX(180deg) scale(2);
   z-index: 2;
-}
+} */
 
 .front, .back {
   height: 100%;
@@ -113,6 +118,7 @@ transform: rotateX(0);
 
 .back {
   transform: rotateX(180deg);
+  background-color: black;
 }
 
 @keyframes rollout {
@@ -125,7 +131,7 @@ transform: rotateX(0);
 }
 
 
-
+/* FONTS */
 
 @font-face {
   font-family: "Almendra";

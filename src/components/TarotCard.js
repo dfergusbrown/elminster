@@ -6,7 +6,7 @@ const TarotCard = ({ cardQuestion, handler }) => {
 
     const {text, answer1, answer2} = cardQuestion || {}
 
-    if (!text) {
+    if (!cardQuestion) {
         return null
     } else {
         return(
@@ -36,7 +36,7 @@ const TarotCard = ({ cardQuestion, handler }) => {
                         </CardImgOverlay>
                     </div>
                     <div className="back">
-                    <CardImg
+                    <div
                             alt="Tarot Card"
                             src={tarotCard}
                             style={styles.cardImage}
@@ -59,7 +59,7 @@ const styles = {
     },
     cardImage: {
         height: "200px",
-        width: "300px"
+        width: "300px",
     }
 }
 
