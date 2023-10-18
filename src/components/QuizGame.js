@@ -1,6 +1,6 @@
 import { Container, Row, Col, Button } from "reactstrap";
 import TarotCard from "./TarotCard";
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { Q1, Q2, Q3, Q4 } from "./Questions";
 import reducer from "./reducer"
 
@@ -18,32 +18,38 @@ const QuizGame = () => {
     }
 
     // QUESTIONS
-    let questionsList = [Q1, Q2, Q3]
+    let questionsList = [Q1]
     const [questionArray, setQuestionArray] = useState(questionsList)
 
-    const whichQuestions = () => {
-        
+    useEffect(() => {
+        console.log(`questionArray: ${questionArray.includes(Q2)}`)
+        console.log(classArray)
+
         if (classArray.length <= 3 && classArray.length > 1) {
-            setQuestionArray(/*individual class questions list here */)
+            // setQuestionArray(/*individual class questions list here */)
         } else {
             if (classArray === dndClassList) {
-                setQuestionArray((oldArray) => oldArray.includes(Q1) ? oldArray : oldArray.push(Q1))
+                setQuestionArray(questionArray => {
+                    return questionArray.includes(Q1) ? questionArray : [...questionArray, Q1]
+                })
+            } else if (classArray.includes(("Sorcerer" || "Warlock") && ("Bard" || "Wizard" || "Cleric"))) {
+                setQuestionArray(questionArray => {
+                    return questionArray.includes(Q2) ? questionArray : [...questionArray, Q2]
+                })
             }
-            if (classArray.includes(("Sorcerer" || "Warlock") && ("Bard" || "Wizard" || "Cleric"))) {
-                setQuestionArray((oldArray) => oldArray.includes(Q2) ? oldArray : oldArray.push(Q2))
-            }
-            if (classArray.includes(("Warlock" || "Cleric" || "Druid") && ("Sorcerer" || "Bard" || "Wizard"))) {
-                setQuestionArray((oldArray) => oldArray.includes(Q3) ? oldArray : oldArray.push(Q3))
-            }
-            if (classArray.includes(("Warlock" || "Cleric" || "Druid") && ("Sorcerer" || "Bard" || "Wizard"))) {
-                setQuestionArray((oldArray) => oldArray.includes(Q3) ? oldArray : oldArray.push(Q3))
-            }
-            if (classArray.includes(("Cleric" || "Druid" || "Bard" || "Paladin" || "Ranger") && (/*anything else */""))) {
-                setQuestionArray((oldArray) => oldArray.includes(Q3) ? oldArray : oldArray.push(Q4))
-            }
+            // if (classArray.includes(("Warlock" || "Cleric" || "Druid") && ("Sorcerer" || "Bard" || "Wizard"))) {
+            //     setQuestionArray(array => {
+            //         return array.includes(Q3) ? array : array.push(Q3)
+            //     })
+            // }
+            // if (classArray.includes(("Warlock" || "Cleric" || "Druid") && ("Sorcerer" || "Bard" || "Wizard"))) {
+            //     setQuestionArray((questionArray) => questionArray.includes(Q3) ? questionArray : questionArray.push(Q3))
+            // }
+            // if (classArray.includes(("Cleric" || "Druid" || "Bard" || "Paladin" || "Ranger") && (/*anything else */""))) {
+            //     setQuestionArray((questionArray) => questionArray.includes(Q4) ? questionArray : questionArray.push(Q4))
+            // }
         }
-        // console.log(`Questions Array: ${questionsList}`)
-    }
+    }, [classArray])
 
     return(
         <Container className="cardcontainer">
@@ -62,13 +68,24 @@ const QuizGame = () => {
                 })}
             </Row>
             <Row>
-                <ol>
-                {classArray.map(item => {
-                    return (
-                        <li>{item}</li>
-                    )
-                })}
-                </ol>
+                <Col>
+                    <ol>
+                    {classArray.map(item => {
+                        return (
+                            <li>{item}</li>
+                        )
+                    })}
+                    </ol>
+                </Col>
+                <Col>
+                    <ol>
+                        {questionArray.map(item => {
+                            return (
+                                <li>{item.text}</li>
+                            )
+                        })}
+                    </ol>
+                </Col>
             </Row>
             <Button
                 onClick={() => console.log(classArray)}
@@ -76,6 +93,9 @@ const QuizGame = () => {
             <Button
                 onClick={() => console.log(questionArray)}
             >Question List</Button>
+            <Button
+                onClick={() => handleClass("reset")}
+            >RESET CLASSES</Button>
         </Container>
     )
 }

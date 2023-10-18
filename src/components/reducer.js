@@ -1,4 +1,6 @@
 
+const dndClassList = ["Artificer", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"]
+
 const reducer = (state, action) => {
     switch (action) {
         case 1.1: 
@@ -49,6 +51,8 @@ const reducer = (state, action) => {
             })
         case 4.2:
             return state;
+        case "reset":
+            return dndClassList
         default:
             throw Error('Unknown action');
     }
