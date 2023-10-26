@@ -1,6 +1,6 @@
 import { Container, Row, Col, Button } from "reactstrap";
 import TarotCard from "./TarotCard";
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useState, useCallback } from "react";
 import { Q1, Q2, Q3, Q4 } from "./Questions";
 import reducer from "./reducer"
 
@@ -16,38 +16,22 @@ const QuizGame = () => {
         dispatch(action)
         console.log(`action to dispatch: ${action}`)
     }
+    // //re-Render
+    // const [, updateState] = useState();
+    // const forceUpdate = useCallback(() => updateState({}), []);
 
     // QUESTIONS
     let questionsList = [Q1]
     const [questionArray, setQuestionArray] = useState(questionsList)
 
     useEffect(() => {
-        console.log(`questionArray: ${questionArray.includes(Q2)}`)
+        // console.log(`questionArray: ${questionArray.includes(Q2)}`)
         console.log(classArray)
-
-        if (classArray.length <= 3 && classArray.length > 1) {
-            // setQuestionArray(/*individual class questions list here */)
-        } else {
-            if (classArray === dndClassList) {
-                setQuestionArray(questionArray => {
-                    return questionArray.includes(Q1) ? questionArray : [...questionArray, Q1]
-                })
-            } else if (classArray.includes(("Sorcerer" || "Warlock") && ("Bard" || "Wizard" || "Cleric"))) {
-                setQuestionArray(questionArray => {
-                    return questionArray.includes(Q2) ? questionArray : [...questionArray, Q2]
-                })
-            }
-            // if (classArray.includes(("Warlock" || "Cleric" || "Druid") && ("Sorcerer" || "Bard" || "Wizard"))) {
-            //     setQuestionArray(array => {
-            //         return array.includes(Q3) ? array : array.push(Q3)
-            //     })
-            // }
-            // if (classArray.includes(("Warlock" || "Cleric" || "Druid") && ("Sorcerer" || "Bard" || "Wizard"))) {
-            //     setQuestionArray((questionArray) => questionArray.includes(Q3) ? questionArray : questionArray.push(Q3))
-            // }
-            // if (classArray.includes(("Cleric" || "Druid" || "Bard" || "Paladin" || "Ranger") && (/*anything else */""))) {
-            //     setQuestionArray((questionArray) => questionArray.includes(Q4) ? questionArray : questionArray.push(Q4))
-            // }
+        if (questionArray.includes(Q1))
+        if (classArray.includes(("Sorcerer" || "Warlock") && ("Bard" || "Wizard" || "Cleric"))) {
+            setQuestionArray(questionArray => {
+                return questionArray.includes(Q2) ? questionArray : [...questionArray, Q2]
+            })
         }
     }, [classArray])
 
@@ -61,6 +45,7 @@ const QuizGame = () => {
                             <TarotCard 
                                 cardQuestion={question}
                                 handler={handleClass}
+                                // forceUpdate={forceUpdate}
                                 key={`${question.answer1}/${question.answer2}`}
                             />
                         </Col>
@@ -81,7 +66,7 @@ const QuizGame = () => {
                     <ol>
                         {questionArray.map(item => {
                             return (
-                                <li>{item.text}</li>
+                                <li>{item.title}</li>
                             )
                         })}
                     </ol>
