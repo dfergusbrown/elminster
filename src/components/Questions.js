@@ -40,10 +40,10 @@ export const Q4 = {
     text: "Do you care about being a healer?",
     answer1: {
         keyword: "sure!",
-        type: 3.1
+        type: 4.1
     },
     answer2: {
         keyword: "not really",
-        type: 3.2
+        type: 4.2
     }
 }

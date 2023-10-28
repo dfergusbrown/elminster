@@ -99,6 +99,13 @@
   font-family: Almendra;
 }
 
+
+
+.answerButton {
+  color: white;
+  background-color: transparent;
+} 
+
 /* .tarotCard:hover {
   cursor: pointer;
   transform: rotateX(180deg) scale(2);

@@ -1,4 +1,4 @@
-import { Button, Card, CardImg, CardImgOverlay, CardText } from "reactstrap";
+import { Card, CardImg, CardImgOverlay, CardText } from "reactstrap";
 import tarotCard from "../images/tarotcardback.jpg";
 import { useState } from "react";
 
@@ -6,6 +6,10 @@ import { useState } from "react";
 const TarotCard = ({ cardQuestion, handler }) => {
     const [checked, setStatus] = useState(false)
     const {text, answer1, answer2} = cardQuestion || {}
+
+    // function resetState () {
+    //     setStatus(false)
+    // }
 
     if (!cardQuestion) {
         return null
@@ -20,26 +24,26 @@ const TarotCard = ({ cardQuestion, handler }) => {
                             src={tarotCard}
                             style={styles.cardImage}
                         />
-                        <CardImgOverlay>
+                        <CardImgOverlay className="">
                             <CardText style={styles.cardText}>{text}</CardText>
-                            <Button
+                            <button 
+                                className="answerButton"
                                 onClick={() => {
                                     setStatus(true)
                                     handler(answer1.type)
                                     console.log(`Button pressed: ${answer1.keyword}`)
-                                    // forceUpdate()
                                     }
                                 }
-                            >{answer1.keyword}</Button>
-                            <Button
+                            >{answer1.keyword}</button>
+                            <button 
+                                className="answerButton"
                                 onClick={() => {
                                     setStatus(true)
                                     handler(answer2.type)
                                     console.log(`Button pressed: ${answer2.keyword}`)
-                                    // forceUpdate()
                                     }
                                 }
-                            >{answer2.keyword}</Button>
+                            >{answer2.keyword}</button>
                         </CardImgOverlay>
                     </div>
                     <div className="back">

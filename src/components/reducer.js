@@ -3,6 +3,7 @@ const dndClassList = ["Artificer", "Barbarian", "Bard", "Cleric", "Druid", "Figh
 
 const reducer = (state, action) => {
     switch (action) {
+    /* Magic or Melee */
         case 1.1: 
             return state.filter(item => {
                 return (
@@ -23,22 +24,28 @@ const reducer = (state, action) => {
                 item !==  "Cleric"
                 )
             })
+
+    /* Useful or Damage-oriented */
         case 2.1:
             return state.filter(item => {
-                return item !== "Sorcerer" && item !== "Warlock"
+                return item !== "Sorcerer" && item !== "Warlock" && item !== "Paladin" && item !== "Ranger"
             });
         case 2.2:
             return state.filter(item => {
-                return item !== "Bard" && item !== "Wizard" && item !== "Cleric"
+                return item !== "Bard" && item !== "Wizard" && item !== "Cleric" && item !== "Artificer" && item !== "Druid"
             })
-        case 3.1:
+
+    /* no or outside source */
+        case 3.1: /*no*/
             return state.filter(item => {
                 return item !== "Cleric" && item !== "Warlock" && item !== "Druid"
             })
-        case 3.2:
+        case 3.2: /*outside source*/
             return state.filter(item => {
-                return item !== "Bard" && item !== "Wizard"
+                return item !== "Bard" && item !== "Wizard" && item !== "Artificer" && item !== "Ranger" && item !== "Sorcerer"
             })
+
+    /* Healer */
         case 4.1:
             return state.filter(item => {
                 return (
@@ -51,6 +58,7 @@ const reducer = (state, action) => {
             })
         case 4.2:
             return state;
+            
         case "reset":
             return dndClassList
         default:

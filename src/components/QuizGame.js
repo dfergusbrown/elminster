@@ -1,6 +1,6 @@
 import { Container, Row, Col, Button } from "reactstrap";
 import TarotCard from "./TarotCard";
-import { useEffect, useReducer, useState, useCallback } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { Q1, Q2, Q3, Q4 } from "./Questions";
 import reducer from "./reducer"
 
@@ -16,24 +16,45 @@ const QuizGame = () => {
         dispatch(action)
         console.log(`action to dispatch: ${action}`)
     }
-    // //re-Render
-    // const [, updateState] = useState();
-    // const forceUpdate = useCallback(() => updateState({}), []);
 
     // QUESTIONS
     let questionsList = [Q1]
     const [questionArray, setQuestionArray] = useState(questionsList)
 
+    // const resetGame = () => {
+    //
+    // }
+
     useEffect(() => {
         // console.log(`questionArray: ${questionArray.includes(Q2)}`)
         console.log(classArray)
-        if (questionArray.includes(Q1))
-        if (classArray.includes(("Sorcerer" || "Warlock") && ("Bard" || "Wizard" || "Cleric"))) {
-            setQuestionArray(questionArray => {
-                return questionArray.includes(Q2) ? questionArray : [...questionArray, Q2]
-            })
+        if (classArray === dndClassList) {
+                return
+            // resetGame()
+        } else if (classArray.includes("Bard" || "Cleric" || "Druid" || "Sorcerer" || "Warlock" || "Wizard")) {
+            if (classArray.includes(("Sorcerer" || "Warlock" || "Paladin" || "Ranger") && ("Bard" || "Wizard" || "Cleric" || "Artificer"))) {
+                setQuestionArray(questionArray => {
+                    return questionArray.includes(Q2) ? questionArray : [...questionArray, Q2]
+                })
+            }
+            if (classArray.includes(("Cleric" || "Warlock" || "Druid") && ("Bard" || "Wizard" || "Artificer" || "Ranger" || "Sorcerer"))) {
+                setQuestionArray(questionArray => {
+                    return questionArray.includes(Q3) ? questionArray : [...questionArray, Q3]
+                })
+            }
+            if (classArray.includes(("Cleric" || "Druid" || "Bard" || "Paladin" || "Ranger"))) {
+                setQuestionArray(questionArray => {
+                    return questionArray.includes(Q4) ? questionArray : [...questionArray, Q4]
+                })
+            }
+
         }
+        /* MELEE */
+        else if (classArray.includes("Barbarian" || "Fighter" || "Monk" || "Paladin" || "Ranger" || "Rogue")) {
+    
+        } 
     }, [classArray])
+
 
     return(
         <Container className="cardcontainer">
@@ -41,14 +62,14 @@ const QuizGame = () => {
             <Row className="cardset">
                 {questionArray.map(question => {
                     return (
-                        <Col className="hoverContainer">
+                        // <Col className="hoverContainer">
                             <TarotCard 
                                 cardQuestion={question}
                                 handler={handleClass}
-                                // forceUpdate={forceUpdate}
                                 key={`${question.answer1}/${question.answer2}`}
+                                // resetState={resetGame}
                             />
-                        </Col>
+                        // {/* </Col> */}
                     )
                 })}
             </Row>
@@ -72,12 +93,6 @@ const QuizGame = () => {
                     </ol>
                 </Col>
             </Row>
-            <Button
-                onClick={() => console.log(classArray)}
-            >Class List</Button>
-            <Button
-                onClick={() => console.log(questionArray)}
-            >Question List</Button>
             <Button
                 onClick={() => handleClass("reset")}
             >RESET CLASSES</Button>
