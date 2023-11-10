@@ -77,7 +77,7 @@ const reducer = (state, action) => {
                 item === "Artificer"
                 )
             })
-        case 4.2: /* Evil */
+        case 4.2: /* Chaotic */
             return state.filter(item => {
                 return (
                 item === "Sorcerer" || 
