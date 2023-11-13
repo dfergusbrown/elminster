@@ -1,7 +1,7 @@
 import { Container, Row, Col, Button } from "reactstrap";
 import TarotCard from "./TarotCard";
 import { useEffect, useReducer, useState } from "react";
-import { Q1, Q2, Q3, Q4 } from "./Questions";
+import { Q0, Q1, Q2, Q3, Q4, Q5, Q11 } from "./Questions";
 import reducer from "./reducer"
 
 
@@ -18,40 +18,55 @@ const QuizGame = () => {
     }
 
     // QUESTIONS
-    let questionsList = [Q1]
+    let questionsList = [Q0]
     const [questionArray, setQuestionArray] = useState(questionsList)
 
-    // const resetGame = () => {
-    //
-    // }
+    const resetGame = () => {
+        setQuestionArray([])
+    }
 
     useEffect(() => {
-        // console.log(`questionArray: ${questionArray.includes(Q2)}`)
+        resetGame()
         console.log(classArray)
-        if (classArray === dndClassList) {
-                return
-            // resetGame()
+/*Q0*/  if (JSON.stringify(classArray) === JSON.stringify(dndClassList)) {
+            setQuestionArray(questionArray => {
+                return questionArray.includes(Q0) ? questionArray : [...questionArray, Q0]
+            })
         } else if (classArray.includes("Bard" || "Cleric" || "Druid" || "Sorcerer" || "Warlock" || "Wizard")) {
-            if (classArray.includes(("Sorcerer" || "Warlock" || "Paladin" || "Ranger") && ("Bard" || "Wizard" || "Cleric" || "Artificer"))) {
+    /*Q1*/  if (classArray.includes(("Sorcerer" || "Warlock" || "Paladin" || "Ranger") && ("Bard" || "Wizard" || "Cleric" || "Artificer"))) {
+                setQuestionArray(questionArray => {
+                    return questionArray.includes(Q1) ? questionArray : [...questionArray, Q1]
+                })
+            }
+    /*Q2*/  if (classArray.includes(("Cleric" || "Warlock" || "Druid") && ("Bard" || "Wizard" || "Artificer" || "Ranger" || "Sorcerer"))) {
                 setQuestionArray(questionArray => {
                     return questionArray.includes(Q2) ? questionArray : [...questionArray, Q2]
                 })
             }
-            if (classArray.includes(("Cleric" || "Warlock" || "Druid") && ("Bard" || "Wizard" || "Artificer" || "Ranger" || "Sorcerer"))) {
+    /*Q3*/  if (classArray.includes(("Cleric" || "Paladin") && ("Bard" || "Ranger" || "Druid" || "Wizard" || "Artificer") && ("Sorcerer" || "Warlock"))) {
                 setQuestionArray(questionArray => {
                     return questionArray.includes(Q3) ? questionArray : [...questionArray, Q3]
                 })
             }
-            if (classArray.includes(("Cleric" || "Druid" || "Bard" || "Paladin" || "Ranger"))) {
+    /*Q4*/  if (classArray.includes(("Cleric" || "Druid" || "Bard" || "Paladin" || "Ranger"))) {
                 setQuestionArray(questionArray => {
                     return questionArray.includes(Q4) ? questionArray : [...questionArray, Q4]
                 })
             }
-
+    /*Q5*/  if (classArray.includes(("Cleric" || "Druid" || "Bard" || "Paladin" || "Ranger"))) {
+                setQuestionArray(questionArray => {
+                    return questionArray.includes(Q5) ? questionArray : [...questionArray, Q5]
+                })
+            }
         }
         /* MELEE */
         else if (classArray.includes("Barbarian" || "Fighter" || "Monk" || "Paladin" || "Ranger" || "Rogue")) {
-    
+            if (classArray.includes(("Cleric" || "Warlock" || "Druid") && ("Bard" || "Wizard" || "Artificer" || "Ranger" || "Sorcerer"))) {
+                setQuestionArray(questionArray => {
+                    return questionArray.includes(Q11) ? questionArray : [...questionArray, Q11]
+                })
+            }
+
         } 
     }, [classArray])
 
@@ -62,14 +77,11 @@ const QuizGame = () => {
             <Row className="cardset">
                 {questionArray.map(question => {
                     return (
-                        // <Col className="hoverContainer">
                             <TarotCard 
                                 cardQuestion={question}
                                 handler={handleClass}
-                                key={`${question.answer1}/${question.answer2}`}
-                                // resetState={resetGame}
+                                key={`${question.title}`}
                             />
-                        // {/* </Col> */}
                     )
                 })}
             </Row>
@@ -78,7 +90,7 @@ const QuizGame = () => {
                     <ol>
                     {classArray.map(item => {
                         return (
-                            <li>{item}</li>
+                            <li key={item}>{item}</li>
                         )
                     })}
                     </ol>
@@ -94,8 +106,10 @@ const QuizGame = () => {
                 </Col>
             </Row>
             <Button
-                onClick={() => handleClass("reset")}
-            >RESET CLASSES</Button>
+                onClick={() => {
+                    handleClass("reset")
+                }}
+            >RESET</Button>
         </Container>
     )
 }

@@ -66,7 +66,7 @@ export const Q4 = {
 }
 
 export const Q5 = {
-    title: "Q4 - Spellcasting Ability",
+    title: "Q5 - Spellcasting Ability",
     text: "Through what ability score does your character use magic?",
     answer1: {
         keyword: "Intelligence",
