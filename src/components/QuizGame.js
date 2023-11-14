@@ -1,7 +1,7 @@
 import { Container, Row, Col, Button } from "reactstrap";
 import TarotCard from "./TarotCard";
 import { useEffect, useReducer, useState } from "react";
-import { Q0, Q1, Q2, Q3, Q4, Q5, Q11 } from "./Questions";
+import { Q0, Q1, Q2, Q3, Q4, Q5, Q11, Q12, Q13, Q14 } from "./Questions";
 import reducer from "./reducer"
 
 
@@ -9,9 +9,7 @@ const QuizGame = () => {
     
     // DND CLASSES
     const dndClassList = ["Artificer", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"]
-
     const [classArray, dispatch] = useReducer(reducer, dndClassList)
-    
     const handleClass = (action) => {
         dispatch(action)
         console.log(`action to dispatch: ${action}`)
@@ -25,49 +23,80 @@ const QuizGame = () => {
         setQuestionArray([])
     }
 
+
     useEffect(() => {
+        const OGClassList = ["Artificer", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"]
+        
+        
+        const effectCondition = (question) => {
+            return question.answer1.array.some(item => classArray.includes(item)) 
+            && question.answer2.array.some(item => classArray.includes(item))
+        }
+    
+        const effectCompare3 = (question) => {
+            return (
+                (question.answer1.array.some(item => classArray.includes(item)) && question.answer2.array.some(item => classArray.includes(item))) 
+                || (question.answer2.array.some(item => classArray.includes(item)) && question.answer3.array.some(item => classArray.includes(item))) 
+                || (question.answer3.array.some(item => classArray.includes(item)) && question.answer1.array.some(item => classArray.includes(item)))
+            )
+        }
+
         resetGame()
         console.log(classArray)
-/*Q0*/  if (JSON.stringify(classArray) === JSON.stringify(dndClassList)) {
+/*Q0*/  if (JSON.stringify(classArray) === JSON.stringify(OGClassList)) {
             setQuestionArray(questionArray => {
                 return questionArray.includes(Q0) ? questionArray : [...questionArray, Q0]
             })
-        } else if (classArray.includes("Bard" || "Cleric" || "Druid" || "Sorcerer" || "Warlock" || "Wizard")) {
-    /*Q1*/  if (classArray.includes(("Sorcerer" || "Warlock" || "Paladin" || "Ranger") && ("Bard" || "Wizard" || "Cleric" || "Artificer"))) {
+        } else if (Q0.answer1.array.some(item => classArray.includes(item))) {
+    /*Q1*/  if (effectCondition(Q1)) {
                 setQuestionArray(questionArray => {
                     return questionArray.includes(Q1) ? questionArray : [...questionArray, Q1]
                 })
             }
-    /*Q2*/  if (classArray.includes(("Cleric" || "Warlock" || "Druid") && ("Bard" || "Wizard" || "Artificer" || "Ranger" || "Sorcerer"))) {
+    /*Q2*/  if (effectCondition(Q2)) {
                 setQuestionArray(questionArray => {
                     return questionArray.includes(Q2) ? questionArray : [...questionArray, Q2]
                 })
             }
-    /*Q3*/  if (classArray.includes(("Cleric" || "Paladin") && ("Bard" || "Ranger" || "Druid" || "Wizard" || "Artificer") && ("Sorcerer" || "Warlock"))) {
+    /*Q3*/  if (Q3.answer1.array.some(item => classArray.includes(item))) {
                 setQuestionArray(questionArray => {
                     return questionArray.includes(Q3) ? questionArray : [...questionArray, Q3]
                 })
             }
-    /*Q4*/  if (classArray.includes(("Cleric" || "Druid" || "Bard" || "Paladin" || "Ranger"))) {
+    /*Q4*/  if (effectCompare3(Q4)) {
                 setQuestionArray(questionArray => {
                     return questionArray.includes(Q4) ? questionArray : [...questionArray, Q4]
                 })
             }
-    /*Q5*/  if (classArray.includes(("Cleric" || "Druid" || "Bard" || "Paladin" || "Ranger"))) {
+    /*Q5*/  if (effectCompare3(Q5)) {
                 setQuestionArray(questionArray => {
                     return questionArray.includes(Q5) ? questionArray : [...questionArray, Q5]
                 })
             }
         }
-        /* MELEE */
-        else if (classArray.includes("Barbarian" || "Fighter" || "Monk" || "Paladin" || "Ranger" || "Rogue")) {
-            if (classArray.includes(("Cleric" || "Warlock" || "Druid") && ("Bard" || "Wizard" || "Artificer" || "Ranger" || "Sorcerer"))) {
+/* MELEE */
+        else if (Q0.answer2.array.some(item => classArray.includes(item))) {
+    /*Q11*/  if (effectCondition(Q11)) {
                 setQuestionArray(questionArray => {
                     return questionArray.includes(Q11) ? questionArray : [...questionArray, Q11]
                 })
             }
-
-        } 
+    /*Q12*/  if (Q12.answer1.array.some(item => classArray.includes(item))) {
+                setQuestionArray(questionArray => {
+                    return questionArray.includes(Q12) ? questionArray : [...questionArray, Q12]
+                })
+            }
+    /*Q13*/  if (effectCondition(Q13)) {
+                setQuestionArray(questionArray => {
+                    return questionArray.includes(Q13) ? questionArray : [...questionArray, Q13]
+                })
+            }
+    /*Q14*/  if (Q14.answer1.array.some(item => classArray.includes(item))) {
+                setQuestionArray(questionArray => {
+                    return questionArray.includes(Q14) ? questionArray : [...questionArray, Q14]
+                })
+            }
+        }
     }, [classArray])
 
 
