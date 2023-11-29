@@ -1,4 +1,3 @@
-import './Main.css';
 import Intro from '../components/Intro'
 import { Routes, Route } from 'react-router-dom';
 import QuizGame from '../components/QuizGame';

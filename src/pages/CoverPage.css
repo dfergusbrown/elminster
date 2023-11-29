@@ -1,3 +1,11 @@
+.background {
+  background-image: url('/src/images/scriptPaperBackground.jpg');
+  background-size: cover;
+  background-position-x: center;
+  height: 100vh;
+  justify-content: center;
+}
+
 .backgroundCover {
   background-image: url('/src/images/fantasyhouse.jpg');
   background-size: cover;
@@ -33,22 +41,19 @@
 /* INTRO PAGE */
 
 .introtext {
-  font-family: WizMagic;
-  font-size: 30px;
+  font-family: Michv2;
+  padding-bottom: 10px;
 }
 
-.introcard {
-  height: 100vh;
-  align-items: center;
-  animation: wizardSlide 2000ms;
+.wizard {
+  background-image: url(../images/oldwizard.png);
+  background-size: cover;
+  background-repeat: none;
+  border-radius: 15px;
 }
 
 .button-intro {
   background-color: rgba(0, 0, 0, 0);
-}
-
-@keyframes wizardSlide {
-  from { align-items: baseline;}
 }
 
 /* QUIZGAME */
@@ -180,4 +185,11 @@ transform: rotateX(0);
   src:
   local("OzWizard"),
   url('../fonts/ozswizard/OzsWizard-CowardlyLion.ttf')
+}
+
+@font-face {
+  font-family: "Michv2";
+  src:
+  local("Michv2"),
+  url('../fonts/michaelmas/Michv2.ttf')
 }
